@@ -1,27 +1,30 @@
-// Complete the function
-// n: Input n
-// Return True if the given number is a lucky number else return False
-
-class Solution{
+class Solution
+{
 public:
-    bool isLucky(int n) 
+    vector<vector<int>> groupThePeople(vector<int> &groupSizes)
     {
-        if(n%2==0)
+        int n = groupSizes.size();
+        unordered_map<int, vector<int>> mp;
+        for (int i = 0; i < n; i++)
         {
-            return false;
+            mp[groupSizes[i]].push_back(i);
         }
-        int val = n;
-        int x = 2;
-        while(x<=n)
+        vector<vector<int>> ans;
+        for (auto it : mp)
         {
-            if(val%x==0)
+            int a = it.first;
+            vector<int> temp = it.second;
+            vector<int> x;
+            for (int i = 0; i < temp.size(); i++)
             {
-                return false;
+                x.push_back(temp[i]);
+                if (x.size() == a)
+                {
+                    ans.push_back(x);
+                    x.clear();
+                }
             }
-            val=val-val/x;
-            x++;
-            n--;
         }
-        return true;
+        return ans;
     }
 };
