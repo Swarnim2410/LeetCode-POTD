@@ -29,25 +29,24 @@ public:
             x = it.second;
             break;
         }
-        vector<int>vis(x+1,0);
+        int lastmiss = x;
         int cnt=0;
         for(auto it : ans)
         {
             int x = it.second;
-            if(vis[x]==0)
+            if(lastmiss == 0)
             {
-                vis[x]=1;
+                cnt += abs(x-lastmiss);
                 continue;
             }
-            while(x)
+            if(x<=lastmiss)
             {
-                cnt++;
-                x--;
-                if(vis[x]==0)
-                {
-                    vis[x]=1;
-                    break;
-                }
+                lastmiss = x-1;
+            }
+            else
+            {
+                cnt += abs(x-lastmiss);
+                lastmiss--;
             }
         }
         return cnt;
