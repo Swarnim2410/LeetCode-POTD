@@ -3,18 +3,19 @@ public:
     int minOperations(vector<int>& nums) 
     {
         int n = nums.size();
-        set<int>s;
-        for(int i=0;i<n;i++)
-        {
-            s.insert(nums[i]);
-        }    
+        sort(nums.begin(),nums.end());
         int x=0;
-        for(auto it : s)
+        for(int i=0;i<n-1;i++)
         {
-            nums[x]=it;
-            x++;
+            if(nums[i]!=nums[i+1])
+            {
+                nums[x]=nums[i];
+                x++;
+            }
         }
-        int a = s.size();
+        nums[x]=nums[n-1];
+        x++;
+        int a = x;
         int i=0;
         int j=0;
         int left = n - a;
