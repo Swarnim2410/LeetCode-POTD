@@ -1,38 +1,19 @@
 class Solution
 {
 public:
-    int totalMoney(int n)
+    string largestOddNumber(string num)
     {
-        int a = n / 7;
-        int b = n % 7;
-        int ans = 0;
-        int f = 1;
-        if (a == 0)
+        for (int i = num.size() - 1; i >= 0; i--)
         {
-            while (b)
+            if (num[i] % 2)
             {
-                ans += f;
-                f++;
-                b--;
+                break;
             }
-            return ans;
+            else
+            {
+                num.pop_back();
+            }
         }
-        int c = 7;
-        int d = 28;
-        ans += (d * a);
-        int g = a - 1;
-        while (g--)
-        {
-            ans += c;
-            c += 7;
-        }
-        int e = 1 + a;
-        while (b)
-        {
-            ans += e;
-            e++;
-            b--;
-        }
-        return ans;
+        return num;
     }
 };
