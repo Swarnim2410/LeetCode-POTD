@@ -1,27 +1,38 @@
 class Solution
 {
 public:
-    int numberOfMatches(int n)
+    int totalMoney(int n)
     {
+        int a = n / 7;
+        int b = n % 7;
         int ans = 0;
-        if (n == 1)
+        int f = 1;
+        if (a == 0)
         {
-            return 0;
+            while (b)
+            {
+                ans += f;
+                f++;
+                b--;
+            }
+            return ans;
         }
-        while (n != 2)
+        int c = 7;
+        int d = 28;
+        ans += (d * a);
+        int g = a - 1;
+        while (g--)
         {
-            if (n % 2)
-            {
-                ans += (n / 2);
-                n = n / 2 + 1;
-            }
-            else
-            {
-                ans += (n / 2);
-                n = n / 2;
-            }
+            ans += c;
+            c += 7;
         }
-        ans += 1;
+        int e = 1 + a;
+        while (b)
+        {
+            ans += e;
+            e++;
+            b--;
+        }
         return ans;
     }
 };
