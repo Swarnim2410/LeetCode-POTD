@@ -5,13 +5,12 @@ public:
     {
         int m = img.size();
         int n = img[0].size();
-        vector<vector<int>> ans(m, vector<int>(n, 0));
         for (int i = 0; i < m; i++)
         {
             for (int j = 0; j < n; j++)
             {
-                double ans1 = 0;
-                double cnt = 0;
+                int ans1 = 0;
+                int cnt = 0;
                 for (int a = -1; a <= 1; a++)
                 {
                     for (int b = -1; b <= 1; b++)
@@ -20,15 +19,21 @@ public:
                         int ncol = j + b;
                         if (nrow >= 0 && ncol >= 0 && nrow < m && ncol < n)
                         {
-                            ans1 += img[nrow][ncol];
+                            ans1 += img[nrow][ncol] % 256;
                             cnt++;
                         }
                     }
                 }
-                ans1 /= cnt;
-                ans[i][j] = ans1;
+                img[i][j] += (ans1 / cnt) * 256;
             }
         }
-        return ans;
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                img[i][j] /= 256;
+            }
+        }
+        return img;
     }
 };
