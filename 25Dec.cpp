@@ -38,7 +38,7 @@ public:
                 {
                     // int nsin = ways;
                     int t = (s[i - 1] - '0') * 10 + (s[i] - '0');
-                    cout << t << endl;
+                    //cout << t << endl;
                     if (t >= 10 && t <= 26)
                     {
                         dou = sin;
