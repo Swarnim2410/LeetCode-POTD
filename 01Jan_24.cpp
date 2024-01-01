@@ -13,8 +13,8 @@ public:
             if (s[j] >= g[i])
             {
                 i++;
-                cnt++;
                 j++;
+                cnt++;
             }
             else
             {
